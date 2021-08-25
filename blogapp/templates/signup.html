@@ -1,0 +1,21 @@
+        {% extends 'index.html' %}
+
+        {% load static %}
+
+        {% block content %}
+        <h2>Registration page</h2>
+
+        <form action="" method="post" novalidate >
+        {% csrf_token %}
+                {% for frm in form %}
+
+                {{frm.label_tag}} {{frm}} {{frm.errors|striptags}}
+                {% endfor %}
+        <input type="submit" class=" btn-success " value="login">
+        {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                  <p class="alert alert-dark role=alert my-3 ml-auto">{{error}}</p>
+                {% endfor %}
+        {% endif %}
+        </form>
+        {% endblock content %}
